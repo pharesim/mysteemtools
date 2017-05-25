@@ -6,12 +6,6 @@ minchange_bias = 0.01 # Minimum change of bias to trigger an update
 numberoftrades = 25 # Number of trades to analyse
 offset = 0 # Percentage to modify the price with
 
-SMTPserver = "" # your smtp server
-SMTPuser = "" # smtp user
-SMTPpass = "" # smtp password
-sender =     "" # sending address
-destination = [] # recipient addresses
-
 
 from piston import Steem
 from pistonbase import transactions
@@ -19,29 +13,11 @@ from piston.transactionbuilder import TransactionBuilder
 from pistonapi.steemnoderpc import SteemNodeRPC
 from piston.witness import Witness
 
-from smtplib import SMTP_SSL as SMTP
-from email.mime.text import MIMEText
-
 import json
 import time
 import dateutil.parser
 import requests
 
-def sendmail(content,subject):
-  try:
-    msg = MIMEText(content, 'plain')
-    msg['Subject']= subject
-    msg['From']   = sender 
-
-    conn = SMTP(SMTPserver)
-    conn.set_debuglevel(False)
-    conn.login(SMTPuser, SMTPpass)
-    try:
-        conn.sendmail(sender, destination, msg.as_string())
-    finally:
-        conn.quit()
-  except Exception:
-    print('Sending mail failed')
 
 def btc_usd():
   prices = {}
