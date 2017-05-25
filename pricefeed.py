@@ -1,7 +1,7 @@
 # Config
 witness = ""    # Your witness name
 wif = ""
-minchange = 0.03 # Minimum change of price to trigger an update
+minchange = 0.02 # Minimum change of price to trigger an update
 minchange_bias = 0.01 # Minimum change of bias to trigger an update
 numberoftrades = 25 # Number of trades to analyse
 offset = 0 # Percentage to modify the price with
