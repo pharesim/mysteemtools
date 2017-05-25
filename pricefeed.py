@@ -6,6 +6,8 @@ minchange_bias = 0.01 # Minimum change of bias to trigger an update
 numberoftrades = 25 # Number of trades to analyse
 offset = 0 # Percentage to modify the price with
 
+rpcnode = 'wss://steemd.steemit.com'
+
 
 from piston import Steem
 from pistonbase import transactions
@@ -62,7 +64,7 @@ def btc_usd():
 
 
 def proceed(op):
-  rpc = SteemNodeRPC('wss://steemd.steemit.com')
+  rpc = SteemNodeRPC(rpcnode)
   expiration = transactions.formatTimeFromNow(60)
   ops    = [transactions.Operation(op)]
   ref_block_num, ref_block_prefix = transactions.getBlockParams(rpc)
