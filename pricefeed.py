@@ -124,7 +124,7 @@ if __name__ == '__main__':
 
   if quantities['steem'] > 0 and quantities['sbd'] > 0:
     price = round((quantities['steembtc']/quantities['steem']*btc_usd())*(1+offset),3)
-    bias = 1 / (quantities['sbdbtc']/quantities['sbd']*btc_usd())
+    bias = round((1/(quantities['sbdbtc']/quantities['sbd']*btc_usd())),3)
     current = Witness(witness)
     curr = float(current['sbd_exchange_rate']['base'][:5])
     curr_bias = float(current['sbd_exchange_rate']['quote'][:5])
