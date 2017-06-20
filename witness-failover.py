@@ -73,7 +73,7 @@ if __name__ == '__main__':
         checkcount = checkcount + 1
 
         if missed > oldmissed:
-         misscount = misscount + 1
+          misscount = misscount + 1
           oldmissed = missed
           print('Missed '+str(misscount)+' block(s) in '+str(checkcount)+' minutes. Total missed: '+str(missed))
           message = "Your node missed "+str(misscount)+" blocks, "+str(missed)+" total."
