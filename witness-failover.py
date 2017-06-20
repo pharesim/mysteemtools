@@ -32,7 +32,7 @@ def sendmail(content,subject):
   try:
     msg = MIMEText(content, text_subtype)
     msg['Subject']= subject
-    msg['From']   = sender 
+    msg['From']   = sender
 
     conn = SMTP(SMTPserver)
     conn.set_debuglevel(False)
@@ -44,18 +44,18 @@ def sendmail(content,subject):
   except Exception:
     print('Sending mail failed')
 
-  def proceed(op):
-    expiration = transactions.formatTimeFromNow(60)
-    ops    = [transactions.Operation(op)]
-    ref_block_num, ref_block_prefix = transactions.getBlockParams(rpc)
-    tx     = transactions.Signed_Transaction(ref_block_num=ref_block_num,
+def proceed(op):
+  expiration = transactions.formatTimeFromNow(60)
+  ops    = [transactions.Operation(op)]
+  ref_block_num, ref_block_prefix = transactions.getBlockParams(rpc)
+  tx     = transactions.Signed_Transaction(ref_block_num=ref_block_num,
                                          ref_block_prefix=ref_block_prefix,
                                          expiration=expiration,
                                          operations=ops)
-    tx = tx.sign([wif])
+  tx = tx.sign([wif])
 
-    # Broadcast JSON to network
-    rpc.broadcast_transaction(tx.json(), api="network_broadcast")
+  # Broadcast JSON to network
+  rpc.broadcast_transaction(tx.json(), api="network_broadcast")
 
 
 if __name__ == '__main__':
